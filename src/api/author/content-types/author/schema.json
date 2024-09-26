@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "authors",
+  "info": {
+    "singularName": "author",
+    "pluralName": "authors",
+    "displayName": "Author",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "text",
+      "required": true
+    },
+    "country": {
+      "type": "string"
+    },
+    "publisher": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::publisher.publisher",
+      "inversedBy": "authors"
+    },
+    "books": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::book.book",
+      "inversedBy": "authors"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "authors"
+    }
+  }
+}

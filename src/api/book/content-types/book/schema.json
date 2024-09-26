@@ -1,0 +1,86 @@
+{
+  "kind": "collectionType",
+  "collectionName": "books",
+  "info": {
+    "singularName": "book",
+    "pluralName": "books",
+    "displayName": "Book",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "text",
+      "required": true
+    },
+    "coverImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "description": {
+      "type": "text"
+    },
+    "price": {
+      "type": "decimal",
+      "required": true
+    },
+    "ean": {
+      "type": "string",
+      "minLength": 13,
+      "maxLength": 13,
+      "unique": true,
+      "required": true
+    },
+    "isbn": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "minLength": 10,
+      "maxLength": 13
+    },
+    "year": {
+      "type": "integer",
+      "min": 1000
+    },
+    "edition": {
+      "type": "integer",
+      "default": 1
+    },
+    "country": {
+      "type": "string"
+    },
+    "pages": {
+      "type": "integer"
+    },
+    "size": {
+      "type": "string"
+    },
+    "weight": {
+      "type": "decimal"
+    },
+    "publisher": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::publisher.publisher",
+      "inversedBy": "books"
+    },
+    "authors": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::author.author",
+      "mappedBy": "books"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category",
+      "inversedBy": "book"
+    }
+  }
+}

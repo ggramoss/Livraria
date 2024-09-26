@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "categories",
+  "info": {
+    "singularName": "category",
+    "pluralName": "categories",
+    "displayName": "Category",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "book": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::book.book",
+      "mappedBy": "category"
+    },
+    "authors": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::author.author",
+      "mappedBy": "categories"
+    },
+    "publishers": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::publisher.publisher",
+      "inversedBy": "categories"
+    }
+  }
+}

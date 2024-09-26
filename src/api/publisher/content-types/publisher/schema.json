@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "publishers",
+  "info": {
+    "singularName": "publisher",
+    "pluralName": "publishers",
+    "displayName": "publisher",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "city": {
+      "type": "string"
+    },
+    "authors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::author.author",
+      "mappedBy": "publisher"
+    },
+    "books": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::book.book",
+      "mappedBy": "publisher"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "mappedBy": "publishers"
+    }
+  }
+}
